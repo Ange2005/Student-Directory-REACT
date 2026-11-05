@@ -1,0 +1,157 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f0f2f5;
+    color: #333;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    color: #800000;
+    margin-bottom: 5px;
+}
+
+header p {
+    color: #666;
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+/* Form Styles */
+
+.form-section {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 0 auto 30px auto;
+}
+
+.form-section h2 {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    color: #800000;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#submit-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #800000;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#submit-btn:hover {
+    background-color: #600000;
+}
+
+
+/* List Section & Responsive Grid */
+
+.list-section h2 {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+#student-list {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    /* 5 cards sa Desktop */
+    gap: 15px;
+}
+
+@media (max-width: 992px) {
+    #student-list {
+        grid-template-columns: repeat(3, 1fr);
+        /* 3 cards sa Tablet */
+    }
+}
+
+@media (max-width: 600px) {
+    #student-list {
+        grid-template-columns: 1fr;
+        /* 1 card sa Mobile */
+    }
+}
+
+#empty-message {
+    grid-column: 1 / -1;
+    color: #777;
+    font-style: italic;
+}
+
+
+/* Dynamic Cards Styling */
+
+.card {
+    background: white;
+    padding: 15px;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid #800000;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.card p {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 12px;
+}
+
+.delete-btn {
+    align-self: flex-start;
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.delete-btn:hover {
+    background-color: #c9302c;
+}
