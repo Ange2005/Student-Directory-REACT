@@ -1,63 +1,70 @@
 
 function FormContainer({ onAddStudent }) {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    function handleSubmit(e) {
-        e.preventDefault();
+    const form = e.currentTarget;
+    const formData = new FormData(form);
 
-        const nameInput = e.target.studentName.value.trim();
-        const programInput = e.target.program.value.trim();
+    const student = {
+      name: formData.get("name").trim(),
+      srcode: formData.get("srcode").trim(),
+      program: formData.get("program").trim(),
+    };
 
-        if (nameInput !== "" && programInput !== "") {
-
-            onAddStudent({
-                id: Date.now(),
-                name: nameInput,
-                program: programInput
-            });
-
-            e.target.reset();
-        }
+    if (!student.name || !student.srcode || !student.program) {
+      return;
     }
 
-    return (
-        <section className="form-section">
-            <h2>Add Student</h2>
+    const success = await onAddStudent(student);
 
-            <form id="student-form" onSubmit={handleSubmit}>
+    if (success) {
+      form.reset();
+    }
+  };
 
-                <div className="input-group">
-                    <label htmlFor="studentName">
-                        Student Name:
-                    </label>
+  return (
+    <section className="form-section">
+      <h2>Add Student</h2>
 
-                    <input
-                        type="text"
-                        id="studentName"
-                        name="studentName"
-                        placeholder="Enter student name"
-                    />
-                </div>
+      <form onSubmit={handleSubmit}>
+        <div className="input-group">
+          <label htmlFor="name">Student Name:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Enter student name"
+            required
+          />
+        </div>
 
-                <div className="input-group">
-                    <label htmlFor="program">
-                        Program:
-                    </label>
+        <div className="input-group">
+          <label htmlFor="srcode">SR Code:</label>
+          <input
+            type="text"
+            id="srcode"
+            name="srcode"
+            placeholder="Enter SR Code"
+            required
+          />
+        </div>
 
-                    <input
-                        type="text"
-                        id="program"
-                        name="program"
-                        placeholder="Enter program/course"
-                    />
-                </div>
+        <div className="input-group">
+          <label htmlFor="program">Program:</label>
+          <input
+            type="text"
+            id="program"
+            name="program"
+            placeholder="Enter program"
+            required
+          />
+        </div>
 
-                <button type="submit" id="submit-btn">
-                    Add Student
-                </button>
-
-            </form>
-        </section>
-    );
+        <button type="submit">Add Student</button>
+      </form>
+    </section>
+  );
 }
 
 export default FormContainer;
